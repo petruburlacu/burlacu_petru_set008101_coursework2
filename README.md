@@ -1,4 +1,4 @@
-"# MEAN-Blog" 
+
  Access development server at: http://localhost:4200
 
  Access API at: http://localhost:8080
