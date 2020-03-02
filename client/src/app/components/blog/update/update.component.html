@@ -1,0 +1,23 @@
+<h1 class="page-header" style="margin-top: 100px;">Edit Post</h1>
+<!-- START BLOG POST FORM -->
+<!-- TITLE -->
+<form>
+  <div class="form-group">
+    <label for="title">Title</label>
+    <div>
+      <input type="text" class="form-control" placeholder="Post Title" [(ngModel)]="blog.title">
+    </div>
+  </div>
+<!-- BODY -->
+  <div class="form-group">
+    <label for="body">Content</label>
+    <div>
+      <textarea rows="10" cols="80" placeholder="Post Content" name="body" class="form-control" [(ngModel)]="blog.body"></textarea>
+    </div>
+  </div>
+<!-- BUTTONs -->
+<button type="button" class="btn btn-outline-secondary" (click)="backClick()">Back</button>
+<button (click)="updateBlogClick()"  type="submit" class="btn btn-success">Update</button>
+<a [routerLink]="['/delete/', blog._id]"><button type="button" class="btn btn-danger">Delete</button></a>
+</form>
+<!-- END BLOG POST FORM -->

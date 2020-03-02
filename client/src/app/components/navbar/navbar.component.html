@@ -1,0 +1,48 @@
+<!--https://getbootstrap.com/docs/4.0/examples/navbar-fixed/
+Bootstrap basic navbar  -->
+
+<!--
+USING Angular routerLinks for routes
+-->
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/home">MEAN | Blog</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto navbar-left">
+        <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+          <a class="nav-link"  routerLink="/">Home <span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li *ngIf="authenticationService.loggedIn()" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+          <a class="nav-link" routerLink="/blog">Blog</a>
+        </li>
+      </ul>
+        <!-- DROPDOWN -->
+        <div class="dropdown">
+          <button class="btn btn-light" type="button" data-toggle="dropdown">User
+          <span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <li *ngIf="authenticationService.loggedIn()" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+              <a class="nav-link" routerLink="/profile">Profile</a>
+            </li>
+            <li *ngIf="!authenticationService.loggedIn()" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+              <a class="nav-link" routerLink="/login">Log in</a>
+            </li>
+            <li *ngIf="authenticationService.loggedIn()" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+              <a class="nav-link" routerLink="/home" (click)="onClickLogout()" >Log out</a>
+            </li>
+            <li *ngIf="!authenticationService.loggedIn()" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+              <a class="nav-link" routerLink="/register">Register</a>
+            </li>
+          </ul>
+        </div>
+        <!-- DROPDOWN END -->
+
+
+    </div>
+  </div>
+</nav>

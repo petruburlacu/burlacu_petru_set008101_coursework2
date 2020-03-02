@@ -1,0 +1,30 @@
+{
+  "name": "mean-blog",
+  "version": "1.0.0",
+  "description": "MEAN BLOG USING ANGULAR",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/petruburlacu/MEAN-Blog.git"
+  },
+  "keywords": [
+    "MEAN",
+    "Blog"
+  ],
+  "author": "Petru Burlacu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/petruburlacu/MEAN-Blog/issues"
+  },
+  "homepage": "https://github.com/petruburlacu/MEAN-Blog#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "jsonwebtoken": "^8.2.1",
+    "mongoose": "^5.0.13"
+  }
+}

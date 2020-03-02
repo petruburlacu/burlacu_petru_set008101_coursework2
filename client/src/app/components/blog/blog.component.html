@@ -1,0 +1,69 @@
+<h1 class="page-header" style="margin-top: 100px;">Blog Feed</h1>
+
+<button *ngIf="!postState" type="button" class="btn btn-warning" (click)="newBlogPostClick()">New Post</button>
+<button *ngIf="!postState" [disabled]="refreshing" type="button" class="btn btn-primary" (click)="refreshBlogFeed()">Refresh</button>
+
+<hr class="my-3" style="background-color: LightSteelBlue ;">
+
+<!-- START BLOG POST FORM -->
+<!-- TITLE -->
+<form *ngIf="postState" [formGroup]="form" (submit)="onNewBlogPostSubmit()">
+  <div class="form-group">
+    <label for="title">Title</label>
+    <div class="">
+      <input type="text" class="form-control" placeholder="Blog Title" formControlName="title" required>
+    </div>
+  </div>
+<!-- BODY -->
+  <div class="form-group">
+    <label for="body">Content</label>
+    <div class="">
+      <textarea required rows="10" cols="80" placeholder="Content" name="body" class="form-control" formControlName="body"></textarea>
+    </div>
+  </div>
+<!-- BUTTONs -->
+<button *ngIf="postState" [disabled]="" type="button" class="btn btn-outline-secondary" (click)="backToFeed()">Back</button>
+<button *ngIf="postState" [disabled]="refreshing || !form.valid" type="submit" class="btn btn-success">Submit</button>
+
+</form>
+<!-- END BLOG POST FORM -->
+
+<!-- START Dynamic BLOG POST -->
+<div  *ngIf="!postState" style="margin-top: 20px;">
+  <div *ngFor="let blog of blogFeed" class="card border-primary mb-3">
+    <div class="card-header"><h3>{{blog.title}}</h3></div>
+    <div class="card-body">
+        {{blog.body}}
+    </div>
+    <div class="card-footer">
+      <span class="badge badge-info" >{{blog.author}}</span>
+      <span class="badge badge-warning">{{blog.date}}</span>
+      <hr class="my-4">
+      <div>
+        <a [routerLink]="['/update/', blog._id]"><button type="button" class="btn btn-outline-primary" (click)="newPost()">Edit</button></a>
+        <a [routerLink]="['/delete/', blog._id]"><button type="button" class="btn btn-outline-danger">Delete</button></a>
+      </div>
+    </div>
+  </div>
+</div>
+<!--  END Dynamic BLOG POST -->
+
+<!-- START SAMPLE BLOG POST -->
+<div  *ngIf="!postState" style="margin-top: 20px;">
+  <div class="card border-primary mb-3">
+    <div class="card-header"><h3>Static Blog post template example</h3></div>
+    <div class="card-body">
+        Lorem ipsum dolor sit amet, et vim appetere neglegentur, populo admodum eu vim, usu te fastidii scriptorem repudiandae. Ne audire fastidii sed, ei mei oratio omnesque, eu ullum graecis volutpat mel. Sed populo minimum recusabo in. Sumo facer latine nam ex. Aliquid volumus ocurreret his ut. Summo affert timeam ex vis.
+    </div>
+    <div class="card-footer">
+      <span class="badge badge-info" >User</span>
+      <span class="badge badge-warning">Date</span>
+      <hr class="my-4">
+      <div>
+        <a routerLink="/edit"><button type="button" class="btn btn-outline-primary" (click)="newPost()">Edit</button></a>
+        <a routerLink="/delete"><button type="button" class="btn btn-outline-danger" (click)="newPost()">Delete</button></a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END BLOG POST -->
